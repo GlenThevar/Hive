@@ -25,6 +25,7 @@ Built using **Thirdweb** and **IPFS via Pinata**, Hive ensures your content is s
 - **Smart Contracts:** Thirdweb
 - **Frontend:** React & Tailwind
 
+---
 
 ## Getting Started
 
