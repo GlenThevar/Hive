@@ -1,4 +1,6 @@
-![Alt text](https://drive.google.com/file/d/1RpY6wtBXWm4WepZ7WU0FfMqY_OWON2eD/view?usp=share_link)
+<img width="1470" alt="Screenshot 2025-04-11 at 10 30 17 AM" src="https://github.com/user-attachments/assets/91358407-1eb6-4581-b314-c85ac7e09869" />
+
+
 
 # Hive - A Decentralized Social Content Platform
 
