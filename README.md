@@ -1,40 +1,29 @@
-<img width="1470" alt="Screenshot 2025-04-11 at 10 30 17 AM" src="https://github.com/user-attachments/assets/91358407-1eb6-4581-b314-c85ac7e09869" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 51 AM" src="https://github.com/user-attachments/assets/99673eda-13b5-42b0-9432-7d6b9035e9c2" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/69ade13d-57eb-4c20-a678-38e0ba5da3b2" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 42 AM" src="https://github.com/user-attachments/assets/33b1cdb6-08af-4990-b704-59873b18cc90" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 29 AM" src="https://github.com/user-attachments/assets/b7e6312d-394a-4f27-81c7-25360c05bd86" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 23 AM" src="https://github.com/user-attachments/assets/ef8f33a3-2c59-413f-8fb6-cac51f0faa77" />
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 17 AM" src="https://github.com/user-attachments/assets/6e63ee90-4af0-4a9a-b0f1-610f3b4545ac" />
+# Hive
 
+Hive is a social media web app I built to learn more about blockchain and how data works on the IPFS network. While working on this project, I explored how decentralized storage helps keep content safe from censorship and truly owned by the creator.
 
-# Hive - A Decentralized Social Content Platform
+Right now, Hive is running on the Sepolia testnet. It already supports the basic features you’d expect in a typical social media app. I'm planning to improve it further and make it more stable in the future.
 
-**Hive** is a blockchain-based social application that allows users to share content, connect through conversations, build personal profiles, donate to creators, and interact with posts through likes, comments, and saves — all on a decentralized network.
+I created this app during my final year of college, but it wasn’t just a college project. I got interested in the word “blockchain” because it sounded cool, and I wanted to understand how decentralized apps (dApps) are actually built.
 
-Built using **Thirdweb** and **IPFS via Pinata**, Hive ensures your content is secure, censorship-resistant, and user-owned. Currently running on the **Sepolia testnet**, Hive is under active development.
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/e1bdf9ef-0605-4bf9-b440-396918f48b62" />
 
----
 
 ##  Features
 
-- Share content and media
-- Start conversations and comment on posts
-- Like, save, and support your favorite posts
-- Create personal profiles
-- Donate to users directly
-- IPFS-powered content hosting via Pinata
-- Smart contracts deployed using Thirdweb
+- Create posts and store them on the IPFS network
+- Comment on posts, like posts and comments
+- Support users by donating directly to them
+- Set up personal profiles
+- Save posts you enjoy
+- Chat with other users
 
----
 
-## ⚒️ Tech Stack
+## Tech Stack Used
 
-- **Blockchain:** Ethereum (Sepolia Testnet)
-- **Storage:** IPFS + Pinata
-- **Smart Contracts:** Thirdweb
 - **Frontend:** React & Tailwind
+- **Backend:** Solidity & Pinata
 
----
 
 ## Getting Started
 
@@ -57,6 +46,4 @@ npm install
 ```bash
 npm run dev
 ```
-
-
 
