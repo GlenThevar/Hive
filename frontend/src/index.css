@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cinzel:wght@400..900&family=Fauna+One&family=Poiret+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+@theme {
+  --font-primary: "Poiret One", sans-serif;
+  --font-secondary: "Rubik", serif;
+  --font-tertiary: "Roboto Mono", serif;
+  --font-login-heading: "Baustil";
+  --font-login-subheading: "Jedira";
+}
+
+@font-face {
+  font-family: Jedira;
+  src: url("./font/Jedira-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Baustil;
+  src: url("./font/baustil-blackitalic.otf") format("opentype");
+}
