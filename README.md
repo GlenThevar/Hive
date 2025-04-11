@@ -1,3 +1,5 @@
+![Alt text](https://drive.google.com/file/d/1RpY6wtBXWm4WepZ7WU0FfMqY_OWON2eD/view?usp=share_link)
+
 # Hive - A Decentralized Social Content Platform
 
 **Hive** is a blockchain-based social application that allows users to share content, connect through conversations, build personal profiles, donate to creators, and interact with posts through likes, comments, and saves — all on a decentralized network.
