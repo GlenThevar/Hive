@@ -1,5 +1,10 @@
 <img width="1470" alt="Screenshot 2025-04-11 at 10 30 17 AM" src="https://github.com/user-attachments/assets/91358407-1eb6-4581-b314-c85ac7e09869" />
-
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 51 AM" src="https://github.com/user-attachments/assets/99673eda-13b5-42b0-9432-7d6b9035e9c2" />
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/69ade13d-57eb-4c20-a678-38e0ba5da3b2" />
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 42 AM" src="https://github.com/user-attachments/assets/33b1cdb6-08af-4990-b704-59873b18cc90" />
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 29 AM" src="https://github.com/user-attachments/assets/b7e6312d-394a-4f27-81c7-25360c05bd86" />
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 23 AM" src="https://github.com/user-attachments/assets/ef8f33a3-2c59-413f-8fb6-cac51f0faa77" />
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 17 AM" src="https://github.com/user-attachments/assets/6e63ee90-4af0-4a9a-b0f1-610f3b4545ac" />
 
 
 # Hive - A Decentralized Social Content Platform
