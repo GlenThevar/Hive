@@ -7,7 +7,7 @@ import UploadAnt from "./UploadAnt";
 import { useAppContext } from "../context/AppProvider";
 
 export default function CreatePost() {
-  const { theme, createPost } = useAppContext();
+  const { theme, createPost, MyProfileDt } = useAppContext();
 
   const edit = true;
   const [text, setTest] = useState("");
@@ -23,37 +23,39 @@ export default function CreatePost() {
     toast.success("Successfully Created!", {
       style: { background: notificationBg, color: notificationTextColor },
     });
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
 
   const Post = async () => {
-    try {
-      setIsLoading(true);
-      // let _cidPostPicture = "";
-      const _caption = text;
-      const _date = Date.now();
-      const _user = activeAccount?.address;
+    if (MyProfileDt.name == "") {
+      console.log("inside");
+      error_notification();
+    } else {
+      try {
+        setIsLoading(true);
+        const _caption = text;
+        const _date = Date.now();
+        const _user = activeAccount?.address;
 
-      // if (fileList.length != 0) {
-      //   let file = fileList[0].originFileObj;
-      //   const upload = await pinata.upload.public.file(file);
-      //   console.log("Upload successful:", upload);
-      //   _cidPostPicture = upload.cid;
-      // }
-
-      await createPost(_user, _caption, _date, fileList);
-    } catch (error) {
-      console.error("Upload failed:", error);
-    } finally {
-      setFileList([""]);
-      setTest("");
-      create_notification();
-      setIsLoading(false);
+        await createPost(_user, _caption, _date, fileList);
+      } catch (error) {
+        console.error("Upload failed:", error);
+      } finally {
+        setFileList([""]);
+        setTest("");
+        create_notification();
+        setIsLoading(false);
+      }
     }
   };
 
   return (
     <div className="p-x-2 mb-4">
       <Toaster position="top-center" reverseOrder={true} />
-      <div className="border-2 border-base-300 rounded-lg p-3 flex flex-col space-y-2 bg-base-100">
+      {/* md:w-60 lg:w-80 */}
+      <div className="border-2 border-base-300 rounded-lg p-3 flex flex-col space-y-2 bg-base-100 ">
         <textarea
           className="w-full resize-none bg-base-200 rounded-lg p-4 border-none text-base-content placeholder-base-content/50 focus:outline-none focus:ring-0 font-tertiary mb-2"
           rows="4"

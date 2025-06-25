@@ -29,8 +29,6 @@ const IndivisualExplore = () => {
     }
   }, [postData, isPostDataPending]);
 
-  console.log(post);
-
   // Getting the profile photo
   const { data: ProfilePhotoData, isPending: isProfilePhotoDataPending } =
     useReadContract({
@@ -43,8 +41,6 @@ const IndivisualExplore = () => {
       setProfilePhoto(ProfilePhotoData);
     }
   }, [ProfilePhotoData, isProfilePhotoDataPending]);
-
-  console.log(profilePhoto);
 
   return (
     <div className="bg-base-100 min-h-screen place-items-center">

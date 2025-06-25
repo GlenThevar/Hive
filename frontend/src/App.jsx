@@ -4,19 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Root from "./root/Root";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import People from './pages/People';
-import Saved from './pages/Saved';
-import SavedPreview from './pages/SavedPreview';
-import Profile from './pages/Profile';
-import Chat from './pages/Chat';
-import IndivisualChat from './pages/IndivisualChat';
-import Explore from './pages/Explore';
-import IndivisualExplore from './pages/IndivisualExplore';
-
+import People from "./pages/People";
+import Saved from "./pages/Saved";
+import SavedPreview from "./pages/SavedPreview";
+import Profile from "./pages/Profile";
+import Chat from "./pages/Chat";
+import IndivisualChat from "./pages/IndivisualChat";
+import Explore from "./pages/Explore";
+import IndivisualExplore from "./pages/IndivisualExplore";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
-  
-  
   return (
     <Router>
       <Routes>
@@ -31,8 +29,6 @@ const App = () => {
           <Route path="explore" element={<Explore />} />
           <Route path="explore/:id" element={<IndivisualExplore />} />
         </Route>
-      </Routes>
-      <Routes>
         <Route path="login" element={<Login />} />
       </Routes>
     </Router>

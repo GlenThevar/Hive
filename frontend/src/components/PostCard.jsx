@@ -32,7 +32,14 @@ const PostCard = ({
   commentText,
   commentLikeCount,
 }) => {
-  const { likePost, folderName, addPostToFolder, theme, MyAddress } = useAppContext();
+  const {
+    likePost,
+    folderName,
+    addPostToFolder,
+    theme,
+    MyAddress,
+    MyProfileDt,
+  } = useAppContext();
 
   const navigate = useNavigate();
 
@@ -54,17 +61,25 @@ const PostCard = ({
     toast.success("Successfully Saved!", {
       style: { background: notificationBg, color: notificationTextColor },
     });
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
 
   const handleSelectChange = (e) => {
     setSelectedFolder(e.target.value);
   };
 
   const heartClick = () => {
-    setHeartClicked(!isHeartClicked);
-    if (heartNumber === 0) {
-      likePost(Number(postId));
+    if (MyProfileDt.name == "") {
+      error_notification();
+    } else {
+      setHeartClicked(!isHeartClicked);
+      if (heartNumber === 0) {
+        likePost(Number(postId));
+      }
+      setHeartNumber(heartNumber + 1);
     }
-    setHeartNumber(heartNumber + 1);
   };
 
   // Function to maintain the post like of a user
@@ -209,7 +224,11 @@ const PostCard = ({
                 <BookmarkBorderOutlinedIcon
                   className="hover:cursor-pointer hover:border-1 hover:border-base-100"
                   onClick={() => {
-                    document.getElementById(`my_modal_${postId}`).showModal();
+                    if (MyProfileDt.name == "") {
+                      error_notification();
+                    } else {
+                      document.getElementById(`my_modal_${postId}`).showModal();
+                    }
                   }}
                 />
               )}

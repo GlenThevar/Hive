@@ -1,6 +1,11 @@
-import { createWallet } from "thirdweb/wallets";
+import { createWallet, inAppWallet } from "thirdweb/wallets";
 
 export const wallets = [
+  inAppWallet({
+    auth: {
+      options: ["google", "x", "phone", "github"],
+    },
+  }),
   createWallet("io.metamask"),
   createWallet("com.coinbase.wallet"),
   createWallet("me.rainbow"),

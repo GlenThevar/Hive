@@ -15,6 +15,7 @@ const ProfileCard = ({ profileUserId }) => {
     theme,
     followUser,
     MyAddress,
+    MyProfileDt,
   } = useAppContext();
   const navigate = useNavigate();
 
@@ -43,6 +44,10 @@ const ProfileCard = ({ profileUserId }) => {
 
   const update_notification = () =>
     toast.success("Successfully Edited!", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
       style: { background: notificationBg, color: notificationTextColor },
     });
   const follow_notification = () =>
@@ -85,16 +90,24 @@ const ProfileCard = ({ profileUserId }) => {
   };
 
   const goToPage = () => {
-    navigate(`/chat/${profileUserId}`);
+    if (MyProfileDt.name == "") {
+      error_notification();
+    } else {
+      navigate(`/chat/${profileUserId}`);
+    }
   };
 
   const follow = async () => {
-    try {
-      await followUser(profileUserId);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      follow_notification();
+    if (MyProfileDt.name == "") {
+      error_notification();
+    } else {
+      try {
+        await followUser(profileUserId);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        follow_notification();
+      }
     }
   };
 
@@ -117,17 +130,15 @@ const ProfileCard = ({ profileUserId }) => {
     }
   }, [isFollowerData, isFollowerDataPending]);
 
-  console.log(followed);
-
   return (
     <>
       <div className="h-full bg-base-100 px-5 pt-3">
+        <Toaster position="top-center" reverseOrder={true} />
         <div
           className={`bg-base-100 rounded-xl pb-5 relative ${
             isEditing ? "border-2 border-base-300 mb-5" : ""
           }`}
         >
-          <Toaster position="top-center" reverseOrder={true} />
           <div className="w-full h-[250px]">
             {isEditing ? (
               <div className="flex justify-center space-x-4 mt-4">
@@ -264,12 +275,17 @@ const ProfileCard = ({ profileUserId }) => {
                         </div>
                       </div>
                       <div className="flex flex-row text-center justify-center space-x-4 mt-2">
-                        <button
-                          onClick={handleEditClick}
-                          className="btn btn-primary rounded font-secondary"
-                        >
-                          Edit
-                        </button>
+                        {!MyProfile ? (
+                          ""
+                        ) : (
+                          <button
+                            onClick={handleEditClick}
+                            className="btn btn-primary rounded font-secondary"
+                          >
+                            Edit
+                          </button>
+                        )}
+
                         {/* {!MyProfile && (
                           <button
                             className="btn btn-neutral rounded font-secondary"

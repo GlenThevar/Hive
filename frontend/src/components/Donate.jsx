@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useAppContext } from "../context/AppProvider";
 
 const Donate = ({ postId }) => {
-  const { donate, theme } = useAppContext();
+  const { donate, theme, MyProfileDt } = useAppContext();
 
   const [newCommentText, setNewCommentText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +17,11 @@ const Donate = ({ postId }) => {
 
   const donate_notification = () =>
     toast.success("Successfully Sent!", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
+
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
       style: { background: notificationBg, color: notificationTextColor },
     });
 
@@ -36,9 +41,13 @@ const Donate = ({ postId }) => {
     <div>
       <Toaster position="top-center" reverseOrder={true} />
       <AttachMoneyOutlinedIcon
-        onClick={() =>
-          document.getElementById(`donate_modal_${postId}`).showModal()
-        }
+        onClick={() => {
+          if (MyProfileDt.name == "") {
+            error_notification();
+          } else {
+            document.getElementById(`donate_modal_${postId}`).showModal();
+          }
+        }}
         className="hover:cursor-pointer hover:border-1 hover:border-base-100"
       />
       <dialog id={`donate_modal_${postId}`} className="modal">

@@ -11,10 +11,6 @@ const Profile = () => {
 
   const { userId } = useParams();
 
-  console.log(postDt);
-
-  console.log(postDt);
-
   return (
     <div>
       <ProfileCard profileUserId={userId} />

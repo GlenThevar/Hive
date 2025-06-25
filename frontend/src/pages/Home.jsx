@@ -46,15 +46,36 @@ const Home = () => {
       setuserProfilePictures(userAddressData);
     }
   }, [userAddressData, isUserAddressDataPending]);
-
-  console.log(home);
-
   return (
     <div className="bg-base-100 min-h-screen place-items-center">
       <div className="hero-content justify-center text-center w-xs sm:w-lg md:w-2xl lg:w-2xl xl:w-3xl ">
         <div className="">
           <CreatePost />
-          {home.map((home, index) => (
+          {home.length == 0 ? (
+            <div></div>
+          ) : (
+            home.map((home, index) => (
+              <PostCard
+                key={index}
+                profilePhoto={userProfilePictures[index]}
+                username={home.userName}
+                caption={home.caption}
+                postImage={home.cidPostPicture}
+                PostDate={FormatDateNow(home.date)}
+                likeCount={home.likeCount}
+                postId={home.postId}
+                profileUserId={MyAddress}
+                commentUserName={home.CommentUserName}
+                commentUserAddress={home.CommentUser}
+                commentDate={home.CommentDate}
+                commentText={home.CommentText}
+                commentLikeCount={home.CommentLikeCount}
+                postUserAddress={home.user}
+              />
+            ))
+          )}
+
+          {/* {home.map((home, index) => (
             <PostCard
               key={index}
               profilePhoto={userProfilePictures[index]}
@@ -72,7 +93,7 @@ const Home = () => {
               commentLikeCount={home.CommentLikeCount}
               postUserAddress={home.user}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

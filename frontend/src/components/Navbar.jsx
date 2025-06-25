@@ -1,29 +1,51 @@
-import { useEffect } from "react";
 import { useWalletDetailsModal } from "thirdweb/react";
-import { useActiveWalletConnectionStatus } from "thirdweb/react";
-import { useNavigate } from "react-router-dom";
 import { useWalletImage } from "thirdweb/react";
+
+import { useNavigate } from "react-router-dom";
 
 import { client } from "../utils/login/client";
 import { useAppContext } from "../context/AppProvider";
+import { useEffect } from "react";
 
 const Navbar = () => {
-  const { updateTheme, themeWallet, theme } = useAppContext();
+  const {
+    updateTheme,
+    themeWallet,
+    theme,
+    SetLoggedIn,
+    LoggedIn,
+    autoConnected,
+  } = useAppContext();
   const detailsModal = useWalletDetailsModal();
   const { data: walletImage } = useWalletImage("io.metamask");
 
-  const status = useActiveWalletConnectionStatus();
   const navigate = useNavigate();
 
+  function handleClick() {
+    detailsModal.open({
+      client,
+      theme: themeWallet,
+      onDisconnect: () => {
+        navigate("/login");
+        SetLoggedIn(false);
+      },
+    });
+  }
+
+  const medium = () => {
+    window.open("https://medium.com/@glenthevar1/hive-ec5b26bd3bed", "_blank");
+  };
+
   useEffect(() => {
-    if (status == "disconnected" || status == "unknown") {
+    if (autoConnected == false && !LoggedIn) {
+      // console.log("Navigating now");
       navigate("/login");
     }
-  }, [status, navigate]);
+  }, [autoConnected, LoggedIn, navigate]);
 
-  function handleClick() {
-    detailsModal.open({ client, theme: themeWallet });
-  }
+  useEffect(() => {
+    sessionStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <div className="navbar bg-base-100 border-b-2 border-base-300 ">
@@ -36,6 +58,14 @@ const Navbar = () => {
         </a>
       </div>
       <div className="flex-none">
+        <button
+          className={` btn  font-bold text-sm rounded-sm bg-black font-secondary p-2 ${
+            theme == "lofi" ? "text-white bg-black" : "text-black bg-white"
+          } `}
+          onClick={medium}
+        >
+          Learn More ?
+        </button>
         <button
           onClick={updateTheme}
           className="btn bg-transparent border-none shadow-none"

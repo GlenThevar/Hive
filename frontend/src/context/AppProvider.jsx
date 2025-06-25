@@ -1,7 +1,7 @@
 import React from "react";
 import { createContext, useContext, useState, useEffect } from "react";
 import { prepareContractCall, toWei } from "thirdweb";
-import { useSendTransaction } from "thirdweb/react";
+import { useSendTransaction, useAutoConnect } from "thirdweb/react";
 import { useReadContract } from "thirdweb/react";
 import { useActiveAccount } from "thirdweb/react";
 
@@ -9,6 +9,8 @@ import { contract as SocialProfileContract } from "../utils/contract/socialprofi
 import { contract as SocialPostContract } from "../utils/contract/socialpost";
 import { contract as SocialMessageContract } from "../utils/contract/socialmessage";
 
+import { client } from "../utils/login/client";
+import { wallets } from "../utils/login/wallet";
 import { pinata } from "../utils/pinata/config";
 
 const AppContext = createContext();
@@ -16,15 +18,18 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const { mutate: sendTransaction } = useSendTransaction();
   const activeAccount = useActiveAccount();
-
   const [ProfileAddress, setProfileAddress] = useState("");
   const [postDt, setPostDt] = useState([]);
-  const [theme, setTheme] = useState("black");
+  const [theme, setTheme] = useState(() => {
+    const val = sessionStorage.getItem("theme");
+    return val ? val : "black";
+  });
   const [themeWallet, setthemeWallet] = useState("dark");
   const [folderName, setFolderName] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [allUsersAddress, setAllUsersAddress] = useState([]);
   const [explorePage, setExplorePage] = useState([]);
+  const [LoggedIn, SetLoggedIn] = useState(false);
   const [UserProfile, setUserProfile] = useState({
     name: "",
     profession: "",
@@ -37,6 +42,23 @@ export const AppProvider = ({ children }) => {
     cid_bannerphoto:
       "https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg",
   });
+  const [MyProfileDt, setMyProfileDt] = useState({
+    name: "",
+    profession: "",
+    city: "",
+  });
+
+  // To Auto Connect on Page reload
+  const { data: autoConnected, isLoading } = useAutoConnect({
+    client,
+    wallets,
+  });
+
+  useEffect(() => {
+    if (autoConnected && !isLoading) {
+      SetLoggedIn(true);
+    }
+  }, [autoConnected, isLoading]);
 
   const MyAddress = activeAccount?.address;
 
@@ -130,6 +152,24 @@ export const AppProvider = ({ children }) => {
       });
     }
   }, [profileData, isProfileDataPending]);
+
+  const { data: MyProfileData, isPending: isMyProfileDataPending } =
+    useReadContract({
+      contract: SocialProfileContract,
+      method:
+        "function getUserProfile(address _userAddress) view returns ((string username, string jobDescription, string location, string cidProfilePhoto, string cidBannerPhoto, uint256 followers, uint256 following, uint256 totalPosts))",
+      params: [MyAddress],
+      queryOptions: { enabled: MyAddress !== "" },
+    });
+  useEffect(() => {
+    if (MyProfileData && !isMyProfileDataPending) {
+      setMyProfileDt({
+        name: profileData.username,
+        profession: profileData.jobDescription,
+        city: profileData.location,
+      });
+    }
+  }, [MyProfileData, isMyProfileDataPending]);
 
   // Function to read the user posts
   const { data: postData, isPending: isPostDataPending } = useReadContract({
@@ -345,6 +385,10 @@ export const AppProvider = ({ children }) => {
         donate,
         sendMessageToUser,
         markMessageAsSeen,
+        SetLoggedIn,
+        LoggedIn,
+        autoConnected,
+        MyProfileDt,
       }}
     >
       {children}

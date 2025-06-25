@@ -1,10 +1,12 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Navigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import { useAppContext } from "../context/AppProvider";
 
 const Root = () => {
   const location = useLocation();
+  const {LoggedIn} = useAppContext();
 
   // Define paths that should NOT have scrolling, including dynamic /chat/{anynumber} paths
   const noScrollRoutes = ["/chat"];
@@ -22,7 +24,6 @@ const Root = () => {
         <div className="sm:w-12 md:w-20 lg:w-80">
           <Sidebar />
         </div>
-
         <div
           className={`flex-1 h-full ${
             isScrollable
@@ -30,7 +31,7 @@ const Root = () => {
               : "overflow-hidden"
           }`}
         >
-          <Outlet />
+          <Outlet/>
         </div>
       </div>
     </div>

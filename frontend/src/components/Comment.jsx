@@ -16,7 +16,7 @@ const Comment = ({
   commentText,
   commentLikeCount,
 }) => {
-  const { comment, MyAddress, theme } = useAppContext();
+  const { comment, MyAddress, theme, MyProfileDt } = useAppContext();
 
   let notificationBg = theme == "black" ? "#333" : "#FFF";
   let notificationTextColor = theme == "black" ? "#FFF" : "#333";
@@ -68,19 +68,27 @@ const Comment = ({
     toast.success("Successfully Commented", {
       style: { background: notificationBg, color: notificationTextColor },
     });
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
 
   // Handle the comment submission
   const handleSubmit = async () => {
-    try {
-      setLoading(true);
-      if (newCommentText.trim() === "") return;
-      await comment(id, MyAddress, Date.now(), newCommentText.trim());
-      comment_notification();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setNewCommentText("");
-      setLoading(false);
+    if (MyProfileDt.name == "") {
+      error_notification();
+    } else {
+      try {
+        setLoading(true);
+        if (newCommentText.trim() === "") return;
+        await comment(id, MyAddress, Date.now(), newCommentText.trim());
+        comment_notification();
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setNewCommentText("");
+        setLoading(false);
+      }
     }
   };
 

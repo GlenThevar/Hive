@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
 import CreateNewFolderOutlinedIcon from "@mui/icons-material/CreateNewFolderOutlined";
@@ -42,14 +43,15 @@ const FolderAdd = ({ folders }) => {
 };
 
 const Saved = () => {
-  const { createSavedFolder, folderName } = useAppContext();
+  const { createSavedFolder, folderName, MyProfileDt, theme } = useAppContext();
 
   const [isFolderClick, setFolderClick] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [folderNm, setFolderNm] = useState("");
 
-  console.log(folderName);
+  let notificationBg = theme == "black" ? "#333" : "#FFF";
+  let notificationTextColor = theme == "black" ? "#FFF" : "#333";
 
   const addFolder = async () => {
     if (folderNm.trim()) {
@@ -66,13 +68,24 @@ const Saved = () => {
       }
     }
   };
+  const error_notification = () =>
+    toast.error("Update profile to interact", {
+      style: { background: notificationBg, color: notificationTextColor },
+    });
 
   return (
     <div className="bg-base-100 min-h-screen place-items-center relative p-4">
+      <Toaster position="top-center" reverseOrder={true} />
       <div className="absolute right-1 top-2">
         <button
           className="btn btn-ghost hover:bg-base-100 border-0"
-          onClick={() => document.getElementById("my_modal_3").showModal()}
+          onClick={() => {
+            if (MyProfileDt.name == "") {
+              error_notification();
+            } else {
+              document.getElementById("my_modal_3").showModal();
+            }
+          }}
         >
           <span onClick={() => setFolderClick(!isFolderClick)}>
             {isFolderClick ? (
