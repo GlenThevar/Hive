@@ -164,9 +164,9 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     if (MyProfileData && !isMyProfileDataPending) {
       setMyProfileDt({
-        name: profileData.username,
-        profession: profileData.jobDescription,
-        city: profileData.location,
+        name: MyProfileData.username,
+        profession: MyProfileData.jobDescription,
+        city: MyProfileData.location,
       });
     }
   }, [MyProfileData, isMyProfileDataPending]);
