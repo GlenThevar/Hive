@@ -1,13 +1,10 @@
-# Hive
+# HIVE
 
-Hive is a social media web app I built to learn more about blockchain and how data works on the IPFS network. While working on this project, I explored how decentralized storage helps keep content safe from censorship and truly owned by the creator.
+<img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/0066983e-4a2d-4575-b1fa-7cbca078e732" />
 
-Right now, Hive is running on the Sepolia testnet. It already supports the basic features you’d expect in a typical social media app. I'm planning to improve it further and make it more stable in the future.
+## Introduction
 
-I created this app during my final year of college, but it wasn’t just a college project. I got interested in the word “blockchain” because it sounded cool, and I wanted to understand how decentralized apps (dApps) are actually built.
-
-<img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/e1bdf9ef-0605-4bf9-b440-396918f48b62" />
-
+Hive is a blockchain based social media, it is a project that I decided to work upon in order to get a better understanding of how blockchain works. This project is a still a work in progress and I keep on itterating on it whenever I get the time to. I used thirdweb which allows users to build Dapps by abstracting most of the complexity. I used react and tailwind in order to build the frontend of the application along with daisy UI for the components. Additionally I have used pinata in order to store the images on the IPFS network. As of now, Hive is operating on the sepolia test nestnet.
 
 ##  Features
 
@@ -22,7 +19,13 @@ I created this app during my final year of college, but it wasn’t just a colle
 ## Tech Stack Used
 
 - **Frontend:** React & Tailwind
-- **Backend:** Solidity & Pinata
+- **Backend:** Solidity, Pinata and Thirdweb
+
+## Additional
+I have written an article for new users inorder to get a basic idea of how hive works 
+
+[![Mediun](https://github.com/user-attachments/assets/c6529bca-7d4a-4d97-a9b9-f8c41c903b94)](https://medium.com/@glenthevar1/hive-ec5b26bd3bed)
+
 
 
 ## Getting Started
