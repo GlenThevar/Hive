@@ -2,6 +2,7 @@
 
 <img width="1470" alt="Screenshot 2025-04-11 at 10 33 49 AM" src="https://github.com/user-attachments/assets/0066983e-4a2d-4575-b1fa-7cbca078e732" />
 
+
 ## Introduction
 
 Hive is a blockchain based social media, it is a project that I decided to work upon in order to get a better understanding of how blockchain works. This project is a still a work in progress and I keep on itterating on it whenever I get the time to. I used thirdweb which allows users to build Dapps by abstracting most of the complexity. I used react and tailwind in order to build the frontend of the application along with daisy UI for the components. Additionally I have used pinata in order to store the images on the IPFS network. As of now, Hive is operating on the sepolia test nestnet.
@@ -22,9 +23,10 @@ Hive is a blockchain based social media, it is a project that I decided to work 
 - **Backend:** Solidity, Pinata and Thirdweb
 
 ## Additional
-I have written an article for new users inorder to get a basic idea of how hive works 
 
-[![Mediun](https://github.com/user-attachments/assets/c6529bca-7d4a-4d97-a9b9-f8c41c903b94)](https://medium.com/@glenthevar1/hive-ec5b26bd3bed)
+![Static Badge](https://img.shields.io/badge/Hive%20Article%20-black?style=for-the-badge&logo=medium&label=MEDIUM&labelColor=black&color=grey&link=https%3A%2F%2Fmedium.com%2F%40glenthevar1%2Fhive-ec5b26bd3bed)
+
+I have written an article for new users inorder to get a basic idea of how hive works 
 
 
 
