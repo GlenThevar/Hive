@@ -24,7 +24,8 @@ Hive is a blockchain based social media, it is a project that I decided to work 
 
 ## Additional
 
-![Static Badge](https://img.shields.io/badge/Hive%20Article%20-black?style=for-the-badge&logo=medium&label=MEDIUM&labelColor=black&color=grey&link=https%3A%2F%2Fmedium.com%2F%40glenthevar1%2Fhive-ec5b26bd3bed)
+[![Static Badge](https://img.shields.io/badge/Hive%20Article%20-black?style=for-the-badge&logo=medium&label=MEDIUM&labelColor=black&color=grey)](https://medium.com/@glenthevar1/hive-ec5b26bd3bed)
+
 
 I have written an article for new users inorder to get a basic idea of how hive works 
 
